@@ -11,7 +11,6 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-
 app.post('/login', controllers.login);
 // ...
 
