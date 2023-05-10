@@ -1,32 +1,33 @@
-const Joi = require('joi');
 const jwt = require('jsonwebtoken');
+const { UserService } = require('../services/UserService');
 
-const { JWT_SECRET } = process.env;
+const secret = process.env.JWT_SECRET;
 
-const validateBody = (body) =>
-  Joi.object({
-    username: Joi.string().min(5).alphanum().required()
-    .messages({
-      'string.required': 'Some required fields are missing',
-    }),
-    password: Joi.string().min(5).required().messages({
-      'string.required': 'Some required fields are missing',
-    }),
-  }).validate(body);
+const isBodyValid = (email, password) => email && password;
 
-module.exports = async (req, res, next) => {
-  const { error } = validateBody(req.body);
+module.exports = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  if (error) return next(error);
-  
-  const payload = {
-    username: req.body.username,
-    admin: false,
-  };
-  
-  const token = jwt.sign(payload, JWT_SECRET, {
-    expiresIn: '1h',
-  });
-  
-  res.status(200).json({ token });
+    if (!isBodyValid(email, password)) {
+      return res.status(400).json({ message: 'Some required fields are missing' });
+    }
+
+    const user = await UserService.getByEmail(email);
+
+    if (!user || user.password !== password) {
+      return res.status(400).json({ message: 'Invalid fields' });
+    }
+
+    const jwtConfig = {
+      expiresIn: '7d',
+      algorithm: 'HS256',
+    };
+
+    const token = jwt.sign({ data: { userId: user.id } }, secret, jwtConfig);
+
+    res.status(200).json({ token });
+  } catch (err) {
+    return res.status(500).json({ message: 'Internal error', error: err.message });
+  }
 };
