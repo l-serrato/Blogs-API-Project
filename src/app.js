@@ -4,15 +4,15 @@ const controllers = require('./controllers');
 // ...
 
 const app = express();
+app.use(express.json());
 
 // não remova ou mova esse endpoint
 app.get('/', (_request, response) => {
   response.send();
 });
+
+
 app.post('/login', controllers.login);
-
-app.use(express.json());
-
 // ...
 
 // É importante exportar a constante `app`,
