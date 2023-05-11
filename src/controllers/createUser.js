@@ -24,11 +24,11 @@ const validateBody = (body) =>
 module.exports = async (req, res, next) => {
   const { error } = validateBody(req.body);
   try {
+    if (error) return next(error);
     const { displayName, email, password, image } = req.body;
     const existing = await UserService.getByEmail(email);
-    if (existing) { res.status(409).json({ message: 'User already registered' }); }
+    if (existing) { return res.status(409).json({ message: 'User already registered' }); }
     const user = await UserService.createUser({ displayName, email, password, image });
-    if (error) return next(error);
     const jwtConfig = {
       expiresIn: '7d',
       algorithm: 'HS256',
