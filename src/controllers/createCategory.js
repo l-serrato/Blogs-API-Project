@@ -1,4 +1,4 @@
-const { CategoryService } = require('../services');
+/* const { CategoryService } = require('../services');
 
 module.exports = async (req, res) => {
   try {
@@ -12,4 +12,4 @@ module.exports = async (req, res) => {
       .status(500)
       .json({ message: 'Erro ao salvar categoria' });
   }
-};
+}; */
