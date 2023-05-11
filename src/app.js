@@ -16,7 +16,7 @@ app.post('/login', controllers.login);
 app.post('/user', controllers.createUser);
 app.get('/user', middlewares.auth, controllers.getUsers);
 app.use(middlewares.error);
-
+// 
 // ...
 
 // É importante exportar a constante `app`,
