@@ -18,6 +18,6 @@ module.exports = (req, res, next) => {
   } catch (err) {
     err.statusCode = 401;
 
-    return next(err);
+    return res.status(401).json({ message: 'Expired or invalid token' });
   }
 };
