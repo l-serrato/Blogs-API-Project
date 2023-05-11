@@ -15,7 +15,7 @@ app.get('/', (_request, response) => {
 app.post('/login', controllers.login);
 app.post('/user', controllers.createUser);
 app.get('/user', middlewares.auth, controllers.getUsers);
-app.get('/user/:userId', middlewares.auth, controllers.getByUserId);
+app.get('/user/:id', middlewares.auth, controllers.getByUserId);
 app.use(middlewares.error);
 // 
 // ...

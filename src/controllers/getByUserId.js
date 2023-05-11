@@ -2,8 +2,8 @@ const { UserService } = require('../services');
 
 module.exports = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const users = await UserService.getByUserId(userId);
+    const { id } = req.params;
+    const users = await UserService.getByUserId(id);
 
     if (!users) throw Error;
 
