@@ -18,6 +18,8 @@ app.get('/user', middlewares.auth, controllers.getUsers);
 app.get('/user/:id', middlewares.auth, controllers.getByUserId);
 app.post('/categories', middlewares.auth, controllers.createCategory);
 app.get('/categories', middlewares.auth, controllers.getCategories);
+app.get('/post', middlewares.auth, controllers.getBlogPosts);
+app.get('/post/:id', middlewares.auth, controllers.getByBlogPostId);
 app.use(middlewares.error);
 // 
 // ...

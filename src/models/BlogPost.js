@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   'BlogPost',
   {
     id: { type: DataTypes.INTEGER, primaryKey: true },
-    displayName: DataTypes.STRING,
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: { type: DataTypes.INTEGER, foreignKey: true },
