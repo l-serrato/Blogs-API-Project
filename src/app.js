@@ -17,6 +17,7 @@ app.post('/user', controllers.createUser);
 app.get('/user', middlewares.auth, controllers.getUsers);
 app.get('/user/:id', middlewares.auth, controllers.getByUserId);
 app.post('/categories', middlewares.auth, controllers.createCategory);
+app.get('/categories', middlewares.auth, controllers.getCategories);
 app.use(middlewares.error);
 // 
 // ...
