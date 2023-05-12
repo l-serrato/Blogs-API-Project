@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   'Category',
   {
     id: { type: DataTypes.INTEGER, primaryKey: true },
-    displayName: DataTypes.STRING,
     name: DataTypes.STRING,
   },
   {

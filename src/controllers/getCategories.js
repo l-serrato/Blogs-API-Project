@@ -1,8 +1,8 @@
-const { CategoriesService } = require('../services');
+const { CategoryService } = require('../services');
 
 module.exports = async (_req, res) => {
   try {
-    const categories = await CategoriesService.getCategories();
+    const categories = await CategoryService.getCategories();
 
     if (!categories) throw Error;
 
