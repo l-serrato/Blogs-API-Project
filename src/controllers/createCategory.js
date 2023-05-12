@@ -1,4 +1,4 @@
-/* const { CategoryService } = require('../services');
+const { CategoryService } = require('../services');
 
 module.exports = async (req, res) => {
   try {
@@ -6,10 +6,10 @@ module.exports = async (req, res) => {
     if (!name) { res.status(400).json({ message: '"name" is required' }); }
     const category = await CategoryService.createCategory({ name });
     
-    res.status(201).json({ name });
+    res.status(201).json({ category });
   } catch (err) {
     res
       .status(500)
       .json({ message: 'Erro ao salvar categoria' });
   }
-}; */
+};
