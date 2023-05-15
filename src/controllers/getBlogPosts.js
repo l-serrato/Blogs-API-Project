@@ -6,7 +6,7 @@ module.exports = async (_req, res) => {
 
     if (!posts) throw Error;
 
-    res.status(200).json(posts);
+    return res.status(200).json(posts);
   } catch (err) {
     res
       .status(500)

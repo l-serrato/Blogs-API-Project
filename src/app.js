@@ -20,6 +20,7 @@ app.post('/categories', middlewares.auth, controllers.createCategory);
 app.get('/categories', middlewares.auth, controllers.getCategories);
 app.get('/post', middlewares.auth, controllers.getBlogPosts);
 app.get('/post/:id', middlewares.auth, controllers.getByBlogPostId);
+app.post('/post', middlewares.auth, controllers.createBlogPost);
 app.use(middlewares.error);
 // 
 // ...
