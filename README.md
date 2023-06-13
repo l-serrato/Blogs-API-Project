@@ -12,7 +12,7 @@
 
   3. Será necessária a utilização de categorias para os posts, trabalhando, assim, a **relação de** `posts` para `categories` e de `categories` para `posts`.
 
-# Requisitos Obrigatórios
+# Requisitos
 
 ## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`
 
